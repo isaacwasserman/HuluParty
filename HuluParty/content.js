@@ -142,21 +142,8 @@ var injectedCode = `
     }
   }
 
-  function checkForVideo() {
-    if($(".content-video-player").length){
-      onVideoReady()
-    }
-    else {
-      setTimeout(function() { checkForVideo() }, 50);
-    }
-  }
-
   function onVideoReady(){
-    var urlParams = new URLSearchParams(window.location.search)
-    if(urlParams.has("huluParty")){
-      addPauseListener()
-      addPartyListener()
-    }
+    console.log("Video Ready")
   }
 
   // On Load
@@ -171,7 +158,19 @@ var injectedCode = `
           toggleExtension()
         }
       }
+      console.log("exists")
+      function checkForVideo() {
+        if(true){
+          console.log("exists")
+        }
+        else {
+          console.log("doesn't exist")
+          setTimeout(function() { checkForVideo() }, 50);
+        }
+      }
       checkForVideo()
+      addPauseListener()
+      addPartyListener()
     }
     else {
       setTimeout(function() { onLoad() }, 50);
